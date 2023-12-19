@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('/assets/JetBrainsMono-Regular.woff2') format('woff2');
+}
+
+body {
+    font-family: 'JetBrainsMono', sans-serif;
+}
+
+  @keyframes my-animation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.my-animation-class {
+    animation: my-animation 2s ease-in-out;
+}

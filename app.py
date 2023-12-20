@@ -2,6 +2,7 @@ import dash
 import plotly.express as px
 from dash import dcc, html
 from dash.dependencies import Output, Input, State
+import pandas as pd
 
 external_stylesheets = [
     "https://cdn.jsdelivr.net/npm/rippleui@1.12.1/dist/css/styles.css",
@@ -20,6 +21,8 @@ app = dash.Dash(
 
 app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
+
+
 
 Sidebar = html.Div(className="flex h-screen flex-col justify-between", style={"backgroundColor": "#09090b"}, children=[
     html.Div(className="px-4 py-6", children=[
@@ -59,6 +62,8 @@ app.layout = html.Div(
         ]
     )
 )
+
+
 
 
 if __name__ == "__main__":

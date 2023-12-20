@@ -1,45 +1,59 @@
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/assets/JetBrainsMono-Regular.woff2") format("woff2");
-  font-style: normal;
-  font-weight: normal;
+    font-family: "JetBrainsMono";
+    src: url("/assets/JetBrainsMono-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
 }
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/assets/JetBrainsMono-Bold.woff2") format("woff2");
-  font-style: normal;
-  font-weight: bold;
+    font-family: "JetBrainsMono";
+    src: url("/assets/JetBrainsMono-Bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: bold;
 }
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/assets/JetBrainsMono-Italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: normal;
+    font-family: "JetBrainsMono";
+    src: url("/assets/JetBrainsMono-Italic.woff2") format("woff2");
+    font-style: italic;
+    font-weight: normal;
 }
 
 body {
-  font-family: "JetBrainsMono", sans-serif;
+    font-family: "JetBrainsMono", sans-serif;
 }
 
 @keyframes my-animation {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .my-animation-class {
-  animation: my-animation 2s ease-in-out;
+    animation: my-animation 2s ease-in-out;
 }
 
 .jbm-bold {
-  font-style: bold;
+    font-style: bold;
 }
 
 .jbm-italic {
-  font-style: italic;
+    font-style: italic;
+}
+
+.ag-theme-material {
+    --ag-foreground-color: rgb(255, 255, 255) !important;
+    --ag-background-color: rgba(9, 9, 11, 1) !important;
+    --ag-header-foreground-color: rgb(255, 255, 255) !important;
+    --ag-header-background-color: rgb(38 38 38) !important;
+    --ag-odd-row-background-color: rgb(0, 0, 0, 0) !important;
+    --ag-header-column-resize-handle-color: rgb(255, 255, 255) !important;
+    --ag-border-color: rgb(38 38 38) !important;
+    --ag-column-hover-color: rgba(53, 53, 206, 0.1) !important;
+    --ag-row-hover-color: rgb(38 38 38) !important;
+    --ag-font-size: 12px !important;
+    --ag-font-family: JetBrainsMono !important;
 }

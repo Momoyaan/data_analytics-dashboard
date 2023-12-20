@@ -9,8 +9,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 dash.register_page(__name__, path='/regression')
-
-telecom_cust = pd.read_csv("assets/dataset.csv")
+telecom_cust = pd.read_csv("assets/dataset-trimmed.csv")
 telecom_cust.TotalCharges = pd.to_numeric(
     telecom_cust.TotalCharges, errors='coerce')
 telecom_cust.isnull().sum()

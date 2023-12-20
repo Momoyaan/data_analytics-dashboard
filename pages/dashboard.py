@@ -10,7 +10,8 @@ import pandas as pd
 from plotly.subplots import make_subplots
 dash.register_page(__name__, path='/')
 
-telecom_cust = pd.read_csv("assets/dataset.csv")
+telecom_cust_full = pd.read_csv("assets/dataset.csv")
+telecom_cust = telecom_cust_full.sample(frac=0.1, random_state=42)
 telecom_cust.TotalCharges = pd.to_numeric(
     telecom_cust.TotalCharges, errors='coerce')
 telecom_cust.isnull().sum()
@@ -48,7 +49,7 @@ gender_bar = go.Figure(
     layout=go.Layout(
         title='Gender Distribution',
         xaxis=dict(title='Gender'),
-        yaxis=dict(title='% Customers', tickformat=".0%"),
+        yaxis=dict(title='% Customers'),
         autosize=True,
         margin=dict(l=50, r=50, b=100, t=100, pad=4),
         paper_bgcolor='rgba(0, 0, 0 , 0)',
@@ -115,7 +116,7 @@ dep_part_bar = go.Figure(
     layout=go.Layout(
         title='% Customers with dependents and partners',
         xaxis=dict(title=''),
-        yaxis=dict(title='% Customers', tickformat=".0%"),
+        yaxis=dict(title='% Customers'),
         barmode='stack',
         autosize=True,
         margin=dict(l=50, r=50, b=100, t=100, pad=4),
@@ -158,7 +159,7 @@ partner_dep_bar = go.Figure(
     layout=go.Layout(
         title='% Customers with/without dependents based on whether they have a partner',
         xaxis=dict(title='Partner'),
-        yaxis=dict(title='% Customers', tickformat=".0%"),
+        yaxis=dict(title='% Customers'),
         barmode='stack',
         autosize=True,
         margin=dict(l=50, r=50, b=100, t=100, pad=4),

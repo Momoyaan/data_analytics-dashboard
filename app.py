@@ -23,7 +23,6 @@ app.css.config.serve_locally = True
 app.scripts.config.serve_locally = True
 
 
-
 Sidebar = html.Div(className="flex h-screen flex-col justify-between", style={"backgroundColor": "#09090b"}, children=[
     html.Div(className="px-4 py-6", children=[
         html.Span(className="grid h-10 w-32 place-content-center rounded-lg text-lg text-white jbm-bold",
@@ -32,10 +31,16 @@ Sidebar = html.Div(className="flex h-screen flex-col justify-between", style={"b
             html.Li(children=[
                 dcc.Link(
                     "Dashboard", href="/", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white"),
-                dcc.Link(
-                    "Table", href="/table", id="table-button", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white")
             ]),
             # ... add more list items here ...
+            html.Li(children=[
+                dcc.Link(
+                    "Table", href="/table", id="table-button", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white"),
+            ]),
+            html.Li(children=[
+                dcc.Link(
+                    "Tree", href="/tree", id="tree-button", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white"),
+            ]),
         ])
     ]),
 ])
@@ -62,8 +67,6 @@ app.layout = html.Div(
         ]
     )
 )
-
-
 
 
 if __name__ == "__main__":

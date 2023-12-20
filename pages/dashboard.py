@@ -3,11 +3,8 @@ from dash import Dash, dcc, html, Input, Output, callback
 from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report, roc_curve, roc_auc_score
 from sklearn.model_selection import train_test_split
-from sklearn.svm import SVR
 import plotly.figure_factory as ff
 import plotly.graph_objects as go
-import plotly.express as px
-import numpy as np
 import pandas as pd
 from plotly.subplots import make_subplots
 dash.register_page(__name__, path='/')
@@ -342,7 +339,8 @@ charges_scatter = go.Figure(
             y=telecom_cust['TotalCharges'],
             mode='markers',
             marker=dict(
-                color=telecom_cust['MonthlyCharges'],  # set color to an array/list of desired values
+                # set color to an array/list of desired values
+                color=telecom_cust['MonthlyCharges'],
                 colorscale='Viridis',  # choose a colorscale
                 opacity=0.8
             )
@@ -363,6 +361,50 @@ charges_scatter = go.Figure(
         ),
     )
 )
+
+not_churn = telecom_cust.MonthlyCharges[(telecom_cust["Churn"] == 'No')]
+churn = telecom_cust.MonthlyCharges[(telecom_cust["Churn"] == 'Yes')]
+
+hist_data = [not_churn, churn]
+group_labels = ['Not Churn', 'Churn']
+
+dist_fig = ff.create_distplot(hist_data, group_labels, bin_size=.2)
+
+dist_fig.update_layout(
+    title_text='Distribution of monthly charges by churn',
+    xaxis_title="Monthly Charges",
+    yaxis_title="Density",
+    paper_bgcolor='rgba(0, 0, 0 , 0)',
+    plot_bgcolor='rgba(0, 0, 0 , 0)',
+    font=dict(
+        family="JetBrainsMono, sans-serif",
+        size=10,
+        color="white"
+    ),
+)
+
+not_churn_total = telecom_cust.TotalCharges[(telecom_cust["Churn"] == 'No')]
+churn_total = telecom_cust.TotalCharges[(telecom_cust["Churn"] == 'Yes')]
+
+hist_data_total = [not_churn_total, churn_total]
+group_labels_total = ['Not Churn', 'Churn']
+
+fig_total = ff.create_distplot(
+    hist_data_total, group_labels_total, bin_size=.2)
+
+fig_total.update_layout(
+    title_text='Distribution of total charges by churn',
+    xaxis_title="Total Charges",
+    yaxis_title="Density",
+    paper_bgcolor='rgba(0, 0, 0 , 0)',
+    plot_bgcolor='rgba(0, 0, 0 , 0)',
+    font=dict(
+        family="JetBrainsMono, sans-serif",
+        size=10,
+        color="white"
+    ),
+)
+
 
 layout = html.Div([
     html.H1("A complete study of the Telco Customer Churn dataset is presented in this project. The purpose of this analysis is to identify the elements that contribute to customer churn in the telecoms industry. This study analyzes customer demographics, service usage patterns, and billing information in order to discover important indications of customer turnover. The research makes use of advanced data analytics and predictive modeling approaches. When it comes to improving service delivery and client retention strategies, the insights that were gathered provide significant recommendations for companies that provide telecommunications services. ", className="font-bold mb-8"),
@@ -408,6 +450,21 @@ layout = html.Div([
                 dcc.Graph(
                   className="rounded-xl border border-neutral-800",
                   id="charges-graph", figure=charges_scatter),
+            ),
+        ],
+    ),
+    html.Div(
+        className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8 mt-4",
+        children=[
+            html.Div(
+                dcc.Graph(
+                  className="rounded-xl border border-neutral-800",
+                  id="dist-graph", figure=dist_fig),
+            ),
+            html.Div(
+                dcc.Graph(
+                    className="rounded-xl border border-neutral-800",
+                    id="hist-graph", figure=fig_total),
             ),
         ],
     ),

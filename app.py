@@ -35,12 +35,17 @@ Sidebar = html.Div(className="flex h-screen flex-col justify-between", style={"b
             # ... add more list items here ...
             html.Li(children=[
                 dcc.Link(
+                    "Regression", href="/regression", id="regression-button", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white"),
+            ]),
+            html.Li(children=[
+                dcc.Link(
                     "Table", href="/table", id="table-button", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white"),
             ]),
             html.Li(children=[
                 dcc.Link(
                     "Tree", href="/tree", id="tree-button", className="btn btn-ghost px-4 py-2 text-sm font-medium text-white"),
             ]),
+
         ])
     ]),
 ])
